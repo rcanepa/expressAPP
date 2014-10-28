@@ -6,11 +6,20 @@ app.use(bodyParser.urlencoded());
 
 
 function log(req, res, next){
-	console.log('log');
+	console.log('executed before app.all');
 	next();
 }
 
+// my useless middleware
+
+app.use(function(req, res, next){
+	console.log('Testing a middleware piece of software!');
+	next();
+});
+
 var names = [];
+
+// my route functions
 
 app.all('/', log, function(req, res, next){
 	console.log('all');
