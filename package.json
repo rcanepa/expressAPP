@@ -1,0 +1,20 @@
+{
+  "name": "expressApp",
+  "version": "1.0.0",
+  "description": "Testing Express",
+  "main": "server.js",
+  "dependencies": {
+    "body-parser": "^1.9.2",
+    "ejs": "^1.0.0",
+    "express": "^4.10.0",
+    "shrinkwrap": "^0.4.0",
+    "jade": "^1.7.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC"
+}
