@@ -1,9 +1,11 @@
 var express = require('express'),
 	bodyParser = require('body-parser'),
-	app = express();
+	app = express(),
+	player = require('./players');
 
 app.use(bodyParser.urlencoded());
 
+var names = [];
 
 function log(req, res, next){
 	console.log('executed before app.all');
@@ -11,16 +13,12 @@ function log(req, res, next){
 }
 
 // my useless middleware
-
 app.use(function(req, res, next){
 	console.log('Testing a middleware piece of software!');
 	next();
 });
 
-var names = [];
-
 // my route functions
-
 app.route('/')
 	.all(log, function(req, res, next){
 		console.log('all');
@@ -39,29 +37,7 @@ app.route('/')
 		res.redirect('/');
 	});
 
-
-/*
-app.all('/', log, function(req, res, next){
-	console.log('all');
-	next();
-});
-
-app.get('/', function(req, res){
-	console.log('get');
-	//res.send('Hello Expres's);
-	//res.render('index.jade', {
-	res.render('index.jade', {
-		title: 'Hello Express & Jade',
-		names: names
-	});
-});
-
-app.post('/', function(req, res){
-	console.log('post');
-	names.push(req.body.name);
-	res.redirect('/');
-});
-*/
+app.use('/players', player);
 
 app.get('/route', function(req, res, next){
 	res.send('This is another route!');
